@@ -24,17 +24,32 @@ module.exports = () => {
       }),
 
       new WebpackPwaManifest({
-        name: 'J.A.T.E.P.W.A',
-        short_name:'',
-        icons: []
+        filename: "manifest.json",
+        short_name: "J.A.T.E",
+        name: "J.A.T.E.P.W.A",
+        crossorigin: 'use-credentials',
+        icons: [
+          {
+            src: "./src/images/logo.png",
+            type: "image/png",
+            sizes: "500x500",
+            purpose: "any maskable"
+          }
+        ],
+        orientation: "portrait",
+        start_url: ".",
+        display: "standalone",
+        description: "Another progressive web app!",
+        background_color: "#7eb4e2",
+        theme_color: "#7eb4e2"
       }),
-      
+
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'service-worker.js',
       }),
     ],
-    
+
     module: {
       rules: [
         {
