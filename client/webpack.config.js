@@ -16,40 +16,38 @@ module.exports = () => {
     output: {
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
+      publicPath: '',
     },
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
         title: 'J.A.T.E'
       }),
-
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
+      }),
       new WebpackPwaManifest({
         filename: "manifest.json",
-        short_name: "J.A.T.E",
-        name: "J.A.T.E.P.W.A",
-        crossorigin: 'use-credentials',
+        short_name: "jate",
+        name: "jatepwa",
+        // crossorigin: 'use-credentials',
         icons: [
           {
-            src: "./src/images/logo.png",
-            type: "image/png",
-            sizes: "500x500",
-            purpose: "any maskable"
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96],
+            destination: 'icons'
           }
         ],
         orientation: "portrait",
         start_url: ".",
         display: "standalone",
-        description: "Another progressive web app!",
+        description: "another progressive web app!",
         background_color: "#7eb4e2",
-        theme_color: "#7eb4e2"
-      }),
-
-      new InjectManifest({
-        swSrc: './src-sw.js',
-        swDest: 'service-worker.js',
+        theme_color: "#7eb4e2",
+        fingerprints: false
       }),
     ],
-
     module: {
       rules: [
         {

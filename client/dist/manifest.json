@@ -1,0 +1,17 @@
+{
+  "icons": [
+    {
+      "src": "icons/icon_96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "name": "jatepwa",
+  "short_name": "jate",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "description": "another progressive web app!",
+  "background_color": "#7eb4e2",
+  "theme_color": "#7eb4e2"
+}
